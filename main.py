@@ -8,13 +8,14 @@ object_db = db.Database()
 
 @app.route('/object/', methods=['GET'])
 @app.route('/object/<id>', methods=['GET'])
-def users(id=None):
+def get_obj(id=None):
     if id == None or id == str(0):
         obj = object_db.read_all()
     else:
         obj = object_db.read(id)
 
-    return obj
+    return str(obj)
+
 
 
 @app.errorhandler(500)
