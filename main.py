@@ -1,6 +1,7 @@
-from flask import Flask
+import flask
+from flask import Flask,jsonify
 import db
-
+flask.Response(response=None)
 app = Flask(__name__)
 object_db = db.Database()
 
@@ -9,11 +10,11 @@ object_db = db.Database()
 @app.route('/object/<id>', methods=['GET'])
 def users(id=None):
     if id == None or id == str(0):
-        users = object_db.read_all()
+        obj = object_db.read_all()
     else:
-        users = object_db.read(id)
+        obj = object_db.read(id)
 
-    return users
+    return jsonify(obj)
 
 
 @app.errorhandler(500)
