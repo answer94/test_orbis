@@ -1,5 +1,5 @@
 import flask
-from flask import Flask,jsonify
+from flask import Flask
 import db
 flask.Response(response=None)
 app = Flask(__name__)
@@ -14,7 +14,7 @@ def users(id=None):
     else:
         obj = object_db.read(id)
 
-    return jsonify(obj)
+    return obj
 
 
 @app.errorhandler(500)
