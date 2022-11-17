@@ -30,6 +30,11 @@ class Database():
                     self.all = self.cur.fetchall()
                     self.__close()
                     return self.all
+                else:
+                    self.cur.execute(f"SELECT * FROM Objects WHERE  objectid = {self.idobj}")
+                    self.all = self.cur.fetchall()
+                    self.__close()
+                    return self.all
             except IndexError:
                 abort(500)
         else:
